@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import LoginSecurity.Entity.User;
 import LoginSecurity.Service.UserService;
+import LoginSecurity.Service.UserServiceImpl;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class HomeController {
@@ -40,17 +42,20 @@ public class HomeController {
 		return "login";
 	}
 	@PostMapping("/saveUser")
-	public String saveuser( @ModelAttribute User user) {
-	User user1=	userService.saveUser(user);
+	public String saveuser( @ModelAttribute User user,HttpSession session) {
+		User user1=	userService.saveUser(user);
+	
 	if(user1!=null) {
-		System.out.println("User Save SuccessFully");
+		session.setAttribute("msg", "Registration successfully");
+//		System.out.println("User Save SuccessFully");
 		
 	}
 	else {
-		System.out.println("Something ent wrong pls try again");
+		session.setAttribute("msg", "Registration Failed pls try again");
+		//System.out.println("Something ent wrong pls try again");
 		
 	}
-		return "register";
+		return "redirect:/register";
 	}
 	
 	

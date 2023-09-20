@@ -19,6 +19,15 @@ th:replace="base::layout(~{::section})"
 					<form action="saveUser" method="post">
   <div class="mb-3">
 	  <h4 class="text-center">Registration form</h4>
+	  
+	  <th:block th:if="${session.msg}">
+		  <p class="text-center text-success">[[${session.msg}]]</p>
+		  <th:block th:text="${@userServiceImpl.removeSessionMessage()}">
+			  
+		  </th:block>
+		  
+	  </th:block>
+	  
     <label for="exampleInputEmail1" class="form-label">Name</label>
     <input type="name"
      class="form-control"

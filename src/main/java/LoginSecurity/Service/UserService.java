@@ -2,8 +2,10 @@ package LoginSecurity.Service;
 
 
 
-import LoginSecurity.Entity.User;
+import org.springframework.stereotype.Service;
 
+import LoginSecurity.Entity.User;
+@Service
 public interface UserService {
 	public User saveUser(User user);
 	

@@ -14,7 +14,14 @@ public class User {
 	private String mobileNo;
 	private String password;
 	private String email;
+	private String role;
 	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	public int getId() {
 		return id;
 	}
@@ -48,7 +55,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", mobileNo=" + mobileNo + ", password=" + password + ", email="
-				+ email + "]";
+				+ email + ", role=" + role + "]";
 	}
 
 	

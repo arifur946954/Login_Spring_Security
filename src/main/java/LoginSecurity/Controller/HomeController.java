@@ -8,14 +8,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import LoginSecurity.Entity.User;
 import LoginSecurity.Service.UserService;
-import LoginSecurity.Service.UserServiceImpl;
+
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class HomeController {
 	@Autowired
 	private UserService userService;
-	@GetMapping("/home")
+	
+	
+	@GetMapping("/user/home")
 	public String home() {
 		return "home";
 	}
@@ -25,7 +27,7 @@ public class HomeController {
 		return "index";
 	}
 	
-	@GetMapping("/profile")
+	@GetMapping("/user/profile")
 	public String profile() {
 		return "profile";
 	}

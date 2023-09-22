@@ -23,6 +23,7 @@ import jakarta.servlet.http.HttpSession;
   public User saveUser(User user) { 
 	String password=  passwordEncoder.encode(user.getPassword());
 	user.setPassword(password);
+	user.setRole("ROLE_USER");
 	  User newuser= userRepo.save(user);
   
   return newuser; }

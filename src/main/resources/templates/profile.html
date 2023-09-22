@@ -9,8 +9,28 @@ th:replace="base::layout(~{::section})"
 </head>
 <body>
 
-<section>
-<h1>Welcome to my Profile Pages</h1>
+<section class="">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 offset-md-4">
+				<div class="card-body">
+					
+					<h1>Welcome to my Profile Pages</h1>
+                  <h3>name: [[${user.name}]]</h3>
+                   <h3>Email: [[${user.email}]]</h3>
+                    <h3>Mobile No: [[${user.mobileNo}]]</h3>
+                   <h3>Role: [[${user.role}]]</h3>
+                   <a class="btn btn-primary" href="/logout">Logout</a>
+					
+				</div>
+				</div>
+				</div>
+				</div>
+	
+	
+	
+	
+
 </section>
 
 

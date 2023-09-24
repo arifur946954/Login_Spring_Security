@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+th:replace="base::layout(~{::section})"
+>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+<body>
+
+<section class="">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 offset-md-4">
+				<div class="card-body">
+					
+					<h1>Welcome to Admin Profile Pages</h1>
+                  <h3>name: [[${user.name}]]</h3>
+                   <h3>Email: [[${user.email}]]</h3>
+                    <h3>Mobile No: [[${user.mobileNo}]]</h3>
+                   <h3>Role: [[${user.role}]]</h3>
+                   <a class="btn btn-primary" href="/logout">Logout</a>
+					
+				</div>
+				</div>
+				</div>
+				</div>
+	
+	
+	
+	
+
+</section>
+
+
+
+</body>
+</html>

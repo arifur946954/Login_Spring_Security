@@ -23,23 +23,23 @@ public class HomeController {
 	private UserRepository userRepo;
 	
 	
-	@GetMapping("/user/home")
-	public String home() {
-		return "home";
-	}
+//	@GetMapping("/user/home")
+//	public String home() {
+//		return "home";
+//	}
 	
 	@GetMapping("/index")
 	public String index() {
 		return "index";
 	}
 	
-	@GetMapping("/user/profile")
-	public String profile( Principal p, Model m) {
-		String email= p.getName();
-	User user=	userRepo.findByEmail(email);
-	m.addAttribute("user", user); 
-		return "profile";
-	}
+//	@GetMapping("/user/profile")
+//	public String profile( Principal p, Model m) {
+//		String email= p.getName();
+//	User user=	userRepo.findByEmail(email);
+//	m.addAttribute("user", user); 
+//		return "profile";
+//	}
 	
 	
 	@GetMapping("/register")

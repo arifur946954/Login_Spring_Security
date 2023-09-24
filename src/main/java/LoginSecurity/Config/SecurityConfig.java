@@ -1,5 +1,6 @@
 package LoginSecurity.Config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -14,6 +15,8 @@ import jakarta.servlet.http.HttpSession;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+	@Autowired
+	public CustomAuthSuccessHandaller successHandaler;
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
@@ -33,18 +36,23 @@ public class SecurityConfig {
 	}
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+		/*
+		 * http.csrf().disable().authorizeHttpRequests()
+		 * .requestMatchers("/","/register","/signin","/saveUser") .permitAll()
+		 * .requestMatchers("/**") .authenticated() .and() .formLogin()
+		 * .loginPage("/signin") .loginProcessingUrl("/userLogin") //
+		 * .usernameParameter("email") .defaultSuccessUrl("/user/profile") .permitAll();
+		 */
+		
 		http.csrf().disable().authorizeHttpRequests()
-		.requestMatchers("/","/register","/signin","/saveUser")
-		.permitAll()
-		.requestMatchers("/**")
-		.authenticated()
-		.and()
-		.formLogin()
-		.loginPage("/signin")
-		.loginProcessingUrl("/userLogin")
-		// .usernameParameter("email")
-		.defaultSuccessUrl("/user/profile")
-		.permitAll();
+		.requestMatchers("/user/**").hasRole("USER")
+		.requestMatchers("/admin/**").hasRole("ADMIN")
+		.requestMatchers("/**").permitAll().and()
+		.formLogin().loginPage("/signin").loginProcessingUrl("/userLogin")
+		.successHandler(successHandaler)
+		.and().logout().permitAll();
+		
+		
 		return http.build();
 	}
 	
